@@ -1,10 +1,45 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Getting Started: Serving Web Content</title>
+    <title>Lynn Blog</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <script src="js/bootstrap.min.js"></script>
+
 </head>
 <body>
-<p th:text="'Hello, ' + ${name} + '!'" />
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Lynn Blog</span>
+            </button>
+            <a class="navbar-brand" href="#">Lynn Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Problems">
+                </div>
+                <button type="submit" class="btn btn-default">Search</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://github.com/login/oauth/authorize?client_id=6557c4ae0b77d9ba7586&redirect_uri=http://localhost:1106/callback&scope=user&state=1">Login</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Me <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Message Center</a></li>
+                        <li><a href="#">Personal Information</a></li>
+                        <li><a href="#">LogOut</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
 </body>
 </html>
