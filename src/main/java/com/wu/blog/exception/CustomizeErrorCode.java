@@ -6,7 +6,8 @@ public enum CustomizeErrorCode implements ICustomizeErrorCode {
     NO_LOGIN(2003,"Unable to comment without login, please login first"),
     SYS_ERROR(2004,"The service was busy"),
     TYPE_PARAM_WRONG(2005,"Wrong or nonexistent comment type"),
-    COMMENT_NOT_FOUND(2006,"Comment not found");
+    COMMENT_NOT_FOUND(2006,"Comment not found"),
+    CONTENT_IS_EMPTY(2007,"Input can not be empty");
 
     private Integer code;
     private String message;
