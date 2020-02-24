@@ -5,10 +5,7 @@ import com.wu.blog.dto.CommentDTO;
 import com.wu.blog.enums.CommentTypeEnum;
 import com.wu.blog.exception.CustomizeErrorCode;
 import com.wu.blog.exception.CustomizeException;
-import com.wu.blog.mapper.CommentMapper;
-import com.wu.blog.mapper.QuestionExtMapper;
-import com.wu.blog.mapper.QuestionMapper;
-import com.wu.blog.mapper.UserMapper;
+import com.wu.blog.mapper.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,8 +27,13 @@ public class CommentService {
 
     @Autowired
     private QuestionExtMapper questionExtMapper;
+
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private CommentExtMapper commentExtMapper;
+
     @Transactional
     public void insert(Comment comment) {
         if(comment.getParentId() == null || comment.getParentId() == 0){
@@ -47,6 +49,11 @@ public class CommentService {
                 throw  new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
             commentMapper.insert(comment);
+            //增加评论数
+            Comment parentComment = new Comment();
+            parentComment.setId(comment.getParentId());
+            parentComment.setCommentCount(1);
+            commentExtMapper.incCommentCount(parentComment);
         }else {
             //回复问题
             Question question = questionMapper.selectByPrimaryKey(comment.getParentId());
@@ -59,11 +66,11 @@ public class CommentService {
         }
     }
 
-    public List<CommentDTO> listByQuestionId(Long id) {
+    public List<CommentDTO> listByTargetId(Long id, CommentTypeEnum type) {
         CommentExample commentExample = new CommentExample();
         commentExample.createCriteria()
                 .andParentIdEqualTo(id)
-                .andTypeEqualTo(CommentTypeEnum.QUESTION.getType());
+                .andTypeEqualTo(type.getType());
         commentExample.setOrderByClause("gmt_create desc");
         List<Comment> comments = commentMapper.selectByExample(commentExample);
         if(comments.size() == 0){

@@ -3,18 +3,18 @@ package com.wu.blog.controller;
 import com.wu.blog.domain.Comment;
 import com.wu.blog.domain.User;
 import com.wu.blog.dto.CommentCreateDTO;
+import com.wu.blog.dto.CommentDTO;
 import com.wu.blog.dto.ResultDTO;
+import com.wu.blog.enums.CommentTypeEnum;
 import com.wu.blog.exception.CustomizeErrorCode;
 import com.wu.blog.mapper.CommentMapper;
 import com.wu.blog.service.CommentService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @RestController
 public class CommentController {
@@ -23,6 +23,7 @@ public class CommentController {
 
     @Autowired
     private CommentService commentService;
+
     @RequestMapping(value = "/comment",method = RequestMethod.POST)
     public  Object post(@RequestBody CommentCreateDTO commentCreateDTO,
                         HttpServletRequest request){
@@ -43,5 +44,10 @@ public class CommentController {
         comment.setPraiseCount(0L);
         commentService.insert(comment);
         return ResultDTO.okOf();
+    }
+    @RequestMapping(value = "/comment/{id}",method = RequestMethod.GET)
+    public ResultDTO<List<CommentDTO>> comments(@PathVariable(name = "id") Long id){
+        List<CommentDTO> commentDTOS = commentService.listByTargetId(id, CommentTypeEnum.COMMENT);
+        return ResultDTO.okOf(commentDTOS);
     }
 }

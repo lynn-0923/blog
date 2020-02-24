@@ -1,8 +1,8 @@
 package com.wu.blog.controller;
 
-import com.wu.blog.dto.CommentCreateDTO;
 import com.wu.blog.dto.CommentDTO;
 import com.wu.blog.dto.QuestionDTO;
+import com.wu.blog.enums.CommentTypeEnum;
 import com.wu.blog.service.CommentService;
 import com.wu.blog.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ public class QuestionController {
     public String question(@PathVariable("id") Long id,
                            Model model){
         QuestionDTO questionDTO=questionService.getById(id);
-        List<CommentDTO> comments=commentService.listByQuestionId(id);
+        List<CommentDTO> comments=commentService.listByTargetId(id, CommentTypeEnum.QUESTION);
         questionService.incView(id);
         model.addAttribute("question",questionDTO);
         model.addAttribute("comments",comments);
