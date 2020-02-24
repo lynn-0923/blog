@@ -1,14 +1,27 @@
 package com.wu.blog.exception;
 
 public enum CustomizeErrorCode implements ICustomizeErrorCode {
-    QUESTION_NOT_FOUND("The problem you are looking for doesn't exist. Please try again later");
-    private String message;
+    QUESTION_NOT_FOUND(2001,"The problem you are looking for doesn't exist. Please try again later"),
+    TARGET_PARAM_NOT_FOUND(2002,"No questions or comments seleted to reply"),
+    NO_LOGIN(2003,"Unable to comment without login, please login first"),
+    SYS_ERROR(2004,"The service was busy"),
+    TYPE_PARAM_WRONG(2005,"Wrong or nonexistent comment type"),
+    COMMENT_NOT_FOUND(2006,"Comment not found");
 
-    CustomizeErrorCode(String message) {
-        this.message = message;
+    private Integer code;
+    private String message;
+    CustomizeErrorCode(Integer code,String message) {
+      this.code = code;
+      this.message = message;
     }
     @Override
     public String getMessage() {
         return message;
     }
+
+    @Override
+    public Integer getCode() {
+        return code;
+    }
+
 }

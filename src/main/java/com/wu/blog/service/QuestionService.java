@@ -7,12 +7,12 @@ import com.wu.blog.dto.PageDTO;
 import com.wu.blog.dto.QuestionDTO;
 import com.wu.blog.exception.CustomizeErrorCode;
 import com.wu.blog.exception.CustomizeException;
+import com.wu.blog.mapper.QuestionExtMapper;
 import com.wu.blog.mapper.QuestionMapper;
 import com.wu.blog.mapper.UserMapper;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.expression.spel.ast.NullLiteral;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,6 +22,9 @@ import java.util.List;
 public class QuestionService {
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private QuestionExtMapper questionExtMapper;
 
     @Autowired
     private QuestionMapper questionMapper;
@@ -55,7 +58,7 @@ public class QuestionService {
         return pageDTO;
     }
 
-    public PageDTO listByUid(Integer uid, Integer page, Integer size) {
+    public PageDTO listByUid(Long uid, Integer page, Integer size) {
         PageDTO pageDTO=new PageDTO();
         Integer totalPages;
         QuestionExample questionExample = new QuestionExample();
@@ -90,7 +93,7 @@ public class QuestionService {
         return pageDTO;
     }
 
-    public QuestionDTO getById(Integer id) {
+    public QuestionDTO getById(Long id) {
         Question question = questionMapper.selectByPrimaryKey(id);
         if(question == null){
             throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
@@ -106,6 +109,9 @@ public class QuestionService {
         if(question.getId() == null){
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
+            question.setCommentCount(0);
+            question.setPraiseCount(0);
+            question.setViewCount(0);
             questionMapper.insert(question);
         }else{
             Question updateQuestion = new Question();
@@ -121,5 +127,12 @@ public class QuestionService {
                 throw  new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
         }
+    }
+
+    public void incView(Long id) {
+        Question question = new Question();
+        question.setId(id);
+        question.setViewCount(1);
+        questionExtMapper.incView(question);
     }
 }

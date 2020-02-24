@@ -13,6 +13,7 @@
     [Git](https://git-scm.com/)
     [flyway](https://flywaydb.org/getstarted/firststeps/maven)
     [Lombok](https://projectlombok.org/setup/maven)
+    [Postman](https://chrome.google.com/webstore/detail/coohjcphdfgbiolnekdpbcijmhambjff)
 ## 脚本
 ```sql
 
