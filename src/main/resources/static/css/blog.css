@@ -37,7 +37,6 @@ body {
 }
 
 .blog-menu {
-    display: block;
     margin-bottom: 15px;
     color: #999;
     font-size: 13px;
@@ -97,4 +96,29 @@ body {
     border: 1px solid #eee;
     padding-top: 15px;
     margin-bottom: 15px;
+}
+.question_tag{
+    margin-right: 10px;
+    font-size: 13px;
+}
+.question-related{
+    line-height: 20px;
+    font-size: 13px;
+    margin-left: 0px;
+    list-style: none;
+    padding-left: 0px;
+}
+.wechat{
+    width: 50%;
+}
+.publish-tag-lab{
+    margin-top: 10px;
+    display: none;
+    padding-top: 10px;
+}
+.publish-tag-lab .label-info{
+    white-space: normal;
+    margin: 5px 5px;
+    font-size: 11px;
+    display: inline-block;
 }

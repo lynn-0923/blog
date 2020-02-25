@@ -1,12 +1,14 @@
 package com.wu.blog.controller;
 
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.wu.blog.cache.TagCache;
 import com.wu.blog.domain.Question;
 import com.wu.blog.domain.User;
 import com.wu.blog.dto.QuestionDTO;
 import com.wu.blog.mapper.QuestionMapper;
 import com.wu.blog.mapper.UserMapper;
 import com.wu.blog.service.QuestionService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,11 +33,13 @@ public class PublishController {
         model.addAttribute("description",question.getDescription());
         model.addAttribute("tag",question.getTag());
         model.addAttribute("id",question.getId());
+        model.addAttribute("tags", TagCache.get());
         return "publish";
     }
 
     @GetMapping("/publish")
-    public  String publish(){
+    public  String publish(Model model){
+        model.addAttribute("tags", TagCache.get());
         return  "publish";
     }
     @PostMapping("/publish")
@@ -50,6 +54,7 @@ public class PublishController {
         model.addAttribute("title",title);
         model.addAttribute("description",description);
         model.addAttribute("tag",tag);
+        model.addAttribute("tags", TagCache.get());
         User user= (User) request.getSession().getAttribute("user");
         if(user ==null){
             model.addAttribute("error","User not logged in");
@@ -63,6 +68,11 @@ public class PublishController {
             return "publish";
         }if(tag ==null || tag ==""){
             model.addAttribute("error","Tag cannot be empty");
+            return "publish";
+        }
+        String invalid = TagCache.filterInvalid(tag);
+        if(StringUtils.isNotBlank(invalid)){
+            model.addAttribute("error","Illegal tag input"+" "+invalid);
             return "publish";
         }
         Question question = new Question();
