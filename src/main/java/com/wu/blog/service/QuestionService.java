@@ -5,6 +5,7 @@ import com.wu.blog.domain.QuestionExample;
 import com.wu.blog.domain.User;
 import com.wu.blog.dto.PageDTO;
 import com.wu.blog.dto.QuestionDTO;
+import com.wu.blog.dto.QuestionQueryDTO;
 import com.wu.blog.exception.CustomizeErrorCode;
 import com.wu.blog.exception.CustomizeException;
 import com.wu.blog.mapper.QuestionExtMapper;
@@ -31,11 +32,16 @@ public class QuestionService {
 
     @Autowired
     private QuestionMapper questionMapper;
-    public PageDTO list(Integer page, Integer size) {
+    public PageDTO list(String search,Integer page, Integer size) {
+        if(StringUtils.isNotBlank(search)){
+            String[] tags = StringUtils.split(search, " ");
+            search = Arrays.stream(tags).collect(Collectors.joining("|"));
+        }
         PageDTO pageDTO=new PageDTO();
         Integer totalPages;
-        QuestionExample questionExample = new QuestionExample();
-        Integer totalCount =(int) questionMapper.countByExample(questionExample);
+        QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
+        questionQueryDTO.setSearch(search);
+        Integer totalCount =questionExtMapper.countBySearch(questionQueryDTO);
         //计算总页数
         totalPages=totalCount % size ==0?(totalCount / size):(totalCount / size +1);
         if(page < 1){
@@ -50,7 +56,9 @@ public class QuestionService {
         List<QuestionDTO> questionDTOS=new ArrayList<>();
         QuestionExample example = new QuestionExample();
         example.setOrderByClause("gmt_create desc");
-        List<Question> questions = questionMapper.selectByExampleWithRowbounds(example, new RowBounds(offset, size));
+        questionQueryDTO.setSize(size);
+        questionQueryDTO.setPage(offset);
+        List<Question> questions = questionExtMapper.selectBySearch(questionQueryDTO);
         for (Question question:questions
              ) {
           User user=  userMapper.selectByPrimaryKey(question.getCreator());
@@ -150,7 +158,6 @@ public class QuestionService {
         Question question=new Question();
         question.setId(queryDTO.getId());
         question.setTag(regexTag);
-//        String tags = StringUtils.replace(questionDTO.getTag(), ",", "|");
         List<Question> questions = questionExtMapper.selectRelated(question);
         List<QuestionDTO> questionDTOS = questions.stream().map(q -> {
             QuestionDTO questionDTO= new QuestionDTO();
