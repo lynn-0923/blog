@@ -42,7 +42,7 @@ public class CommentController {
         comment.setGmtModified(System.currentTimeMillis());
         comment.setCommentator(user.getId());
         comment.setPraiseCount(0L);
-        commentService.insert(comment);
+        commentService.insert(comment,user);
         return ResultDTO.okOf();
     }
     @RequestMapping(value = "/comment/{id}",method = RequestMethod.GET)

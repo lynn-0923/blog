@@ -3,6 +3,7 @@ package com.wu.blog.controller;
 import com.wu.blog.domain.User;
 import com.wu.blog.dto.PageDTO;
 import com.wu.blog.mapper.UserMapper;
+import com.wu.blog.service.NotificationService;
 import com.wu.blog.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,8 @@ import javax.servlet.http.HttpServletRequest;
 public class ProfileController {
     @Autowired
     private QuestionService questionService;
+    @Autowired
+    private NotificationService notificationService;
     @GetMapping("/profile/{action}")
     public  String profile(@PathVariable(name = "action") String action,
                            @RequestParam(value = "page",defaultValue ="1") Integer page,
@@ -31,12 +34,14 @@ public class ProfileController {
         if("questions".equals(action)){
             model.addAttribute("section","questions");
             model.addAttribute("sectionName","My Problem");
+            PageDTO pageDTOs = questionService.listByUid(user.getId(), page, size);
+            model.addAttribute("pageDTOs",pageDTOs);
         }else if("replies".equals(action)){
+            PageDTO pageDTOs=notificationService.list(user.getId(),page,size);
             model.addAttribute("section","replies");
+            model.addAttribute("pageDTOs",pageDTOs);
             model.addAttribute("sectionName","Latest Reply");
         }
-        PageDTO pageDTOs = questionService.listByUid(user.getId(), page, size);
-        model.addAttribute("pageDTOs",pageDTOs);
         return "profile";
     }
 }

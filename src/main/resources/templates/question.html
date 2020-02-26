@@ -7,13 +7,18 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/css/blog.css">
+    <link rel="stylesheet" href="/css/editormd.preview.min.css">
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.min.js" type="application/javascript"></script>
     <script src="/js/moment.js"></script>
     <script src="/js/blog.js" type="application/javascript"></script>
+    <script src="/js/editormd.min.js" type="application/javascript" ></script>
+    <script src="/js/lib/marked.min.js" type="application/javascript"> </script>
+    <script src="/js/lib/prettify.min.js" type="application/javascript" ></script>
 
 
-</head>
+
+    </head>
 <body>
 <div th:insert="~{navigation :: nav}"></div>
 <div class="container-fluid main profile">
@@ -29,7 +34,15 @@
               viewCounts: <span th:text="${question.getViewCount()}"></span>
             </span>
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" th:text="${question.description}"></div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="question-view">
+                    <textarea style="display: none"  th:text="${question.description}" ></textarea>
+                </div>
+                <script type="text/javascript">
+                    $(function () {
+                        editormd.markdownToHTML("question-view",{
+                        });
+                    });
+                </script>
                 <!--标签-->
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -135,8 +148,8 @@
             <!--微信号-->
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div>
-                <h4>Java学习交流</h4>
-                <img class="img-thumbnail wechat" src="/img/wechat.jpg">
+                <h4>Java Learning Communication</h4>
+                <img class="img-thumbnail wechat" src="/images/wechat.jpg">
             </div>
             <!--相关问题-->
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

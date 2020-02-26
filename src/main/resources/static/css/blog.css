@@ -26,7 +26,8 @@ body {
     padding-top: 10px;
 }
 
-.text-desc {
+.notify_time {
+    float: right;
     font-size: 12px;
     font-weight: normal;
     color: #999;

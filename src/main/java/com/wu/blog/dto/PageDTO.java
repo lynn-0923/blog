@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class PageDTO {
+public class PageDTO<T> {
     /**
      * 所有问题数
      */
-    private List<QuestionDTO> questions;
+    private List<T> data;
     /**
      * 是否显示前一页的标志
      */

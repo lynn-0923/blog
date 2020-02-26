@@ -7,7 +7,9 @@ public enum CustomizeErrorCode implements ICustomizeErrorCode {
     SYS_ERROR(2004,"The service was busy"),
     TYPE_PARAM_WRONG(2005,"Wrong or nonexistent comment type"),
     COMMENT_NOT_FOUND(2006,"Comment not found"),
-    CONTENT_IS_EMPTY(2007,"Input can not be empty");
+    CONTENT_IS_EMPTY(2007,"Input can not be empty"),
+    READ_NOTIFICATION_FAILURE(2008,"Can't read other's information"),
+    NOTIFICATION_NOT_FOUND(2009,"The news disappeared");
 
     private Integer code;
     private String message;

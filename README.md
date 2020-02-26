@@ -9,6 +9,7 @@
     [Lombok](https://projectlombok.org/setup/maven)
     [Thymeleaf](https://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html#setting-attribute-values)
     [Spring MVC](https://docs.spring.io/spring/docs/5.0.3.RELEASE/spring-framework-reference/web.html#mvc-config-interceptors)
+    [MarkDown插件](https://pandao.github.io/editor.md/)
 ## 工具
     [Git](https://git-scm.com/)
     [flyway](https://flywaydb.org/getstarted/firststeps/maven)
