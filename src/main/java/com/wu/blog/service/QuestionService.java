@@ -32,7 +32,7 @@ public class QuestionService {
 
     @Autowired
     private QuestionMapper questionMapper;
-    public PageDTO list(String search,Integer page, Integer size) {
+    public PageDTO list(String search, String tag, Integer page, Integer size) {
         if(StringUtils.isNotBlank(search)){
             String[] tags = StringUtils.split(search, " ");
             search = Arrays.stream(tags).collect(Collectors.joining("|"));
@@ -41,6 +41,7 @@ public class QuestionService {
         Integer totalPages;
         QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
         questionQueryDTO.setSearch(search);
+        questionQueryDTO.setTag(tag);
         Integer totalCount =questionExtMapper.countBySearch(questionQueryDTO);
         //计算总页数
         totalPages=totalCount % size ==0?(totalCount / size):(totalCount / size +1);

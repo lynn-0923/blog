@@ -127,3 +127,13 @@ body {
     padding: 10px 25%;
     color: #666;
 }
+.hot-tag{
+    font-size: 14px;
+}
+.board{
+  text-indent: 2em;
+    font-size: 16px;
+}
+.board-footer{
+    float: right;
+}

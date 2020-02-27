@@ -11,6 +11,7 @@
     [Spring MVC](https://docs.spring.io/spring/docs/5.0.3.RELEASE/spring-framework-reference/web.html#mvc-config-interceptors)
     [MarkDown插件](https://pandao.github.io/editor.md/)
     [ucloud](https://docs.ucloud.cn/storage_cdn/ufile/tools/sdk)
+    [spring boot schedule](https://spring.io/guides/gs/scheduling-tasks/)
 ## 工具
     [Git](https://git-scm.com/)
     [flyway](https://flywaydb.org/getstarted/firststeps/maven)
