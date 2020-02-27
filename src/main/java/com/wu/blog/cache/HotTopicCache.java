@@ -11,7 +11,7 @@ import java.util.*;
 public class HotTopicCache {
     private List<String>  hots=new ArrayList<>();
     public void updateTopics( Map<String,Integer> topics){
-        int max=10;
+        int max=8;
         PriorityQueue<HotTopicDTO> priorityQueue=new PriorityQueue<>(max);
         topics.forEach((name,priority)->{
             HotTopicDTO hotTopicDTO = new HotTopicDTO();

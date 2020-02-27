@@ -49,6 +49,7 @@ public class HotTopicTasks {
             }
             offset+=limit;
         }
+
         hotTopicCache.updateTopics(priorities);
         log.info("hotTopicSchedule end {}", new Date());
     }

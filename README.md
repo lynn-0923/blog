@@ -1,4 +1,10 @@
-## xiaowu commuity
+## lynncommuity
+
+##部署
+-git
+-jdk
+-maven
+-mysql
 
 ## 资料
     [Spring文档](https://spring.io/guides/)

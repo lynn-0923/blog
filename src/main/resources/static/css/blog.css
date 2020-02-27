@@ -128,11 +128,12 @@ body {
     color: #666;
 }
 .hot-tag{
-    font-size: 14px;
+    font-size: 17px;
 }
 .board{
   text-indent: 2em;
     font-size: 16px;
+    float: right;
 }
 .board-footer{
     float: right;
