@@ -138,3 +138,6 @@ body {
 .board-footer{
     float: right;
 }
+.board-left{
+  padding-left: 45px;
+}
