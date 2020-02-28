@@ -90,7 +90,7 @@ public class QuestionService {
         }
         pageDTO.setPagination(totalPages,page);
         //size*(page-1)
-        Integer offset=size*(page-1);
+        Integer offset = page < 1 ? 0 : size * (page - 1);
         List<QuestionDTO> questionDTOS=new ArrayList<>();
         QuestionExample example = new QuestionExample();
         example.createCriteria()
