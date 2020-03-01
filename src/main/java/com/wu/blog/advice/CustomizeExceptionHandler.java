@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.wu.blog.dto.ResultDTO;
 import com.wu.blog.exception.CustomizeErrorCode;
 import com.wu.blog.exception.CustomizeException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ import java.io.PrintWriter;
 import java.io.Writer;
 
 @ControllerAdvice
+@Slf4j
 public class CustomizeExceptionHandler {
     @ExceptionHandler(Exception.class)
     ModelAndView handler(Throwable ex, Model model, HttpServletRequest request, HttpServletResponse response) {
