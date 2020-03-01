@@ -3,7 +3,6 @@ package com.wu.blog.controller;
 import com.wu.blog.domain.User;
 import com.wu.blog.dto.AccessTokenDTO;
 import com.wu.blog.dto.GithubUser;
-import com.wu.blog.mapper.UserMapper;
 import com.wu.blog.provider.GithubProvider;
 import com.wu.blog.service.UserService;
 import lombok.extern.slf4j.Slf4j;
