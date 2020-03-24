@@ -13,18 +13,18 @@ public class TagCache {
         List<TagDTO> tagDTOS = new ArrayList<>();
         TagDTO program = new TagDTO();
         program.setCategoryName("developmentLanguage");
-        program.setTags(Arrays.asList("javascript", "php", "css", "html", "html5", "java", "node.js", "python", "c++", "c", "golang", "objective-c", "typescript", "shell", "swift", "c#", "sass", "ruby", "bash", "less", "asp.net", "lua", "scala", "coffeescript", "actionscript", "rust", "erlang", "perl"));
+        program.setTags(Arrays.asList("java", "javascript", "php", "css", "html", "algorithms", "design pattern", "html5", "node.js", "python", "c++", "c", "golang", "objective-c", "typescript", "shell", "swift", "c#", "sass", "ruby", "bash", "less", "asp.net", "lua", "scala", "coffeescript", "actionscript", "rust", "erlang", "perl"));
         tagDTOS.add(program);
 
         TagDTO framework = new TagDTO();
         framework.setCategoryName("platformFramework");
-        framework.setTags(Arrays.asList("laravel", "spring", "express", "django", "flask", "yii", "ruby-on-rails", "tornado", "koa", "struts"));
+        framework.setTags(Arrays.asList("springboot", "spring", "springcloud", "springmvc", "javaweb", "springData", "mybatis", "mybatis-plus", "shiro", "hibernate", "struts", "jpa"));
         tagDTOS.add(framework);
 
 
         TagDTO server = new TagDTO();
         server.setCategoryName("theServer");
-        server.setTags(Arrays.asList("linux", "nginx", "docker", "apache", "ubuntu", "centos", "缓存 tomcat", "负载均衡", "unix", "hadoop", "windows-server"));
+        server.setTags(Arrays.asList("linux", "nginx", "docker", "apache", "ubuntu", "centos", "tomcat", "ngnix", "unix", "dubbo", "hadoop", "windows-server"));
         tagDTOS.add(server);
 
         TagDTO db = new TagDTO();
@@ -34,7 +34,7 @@ public class TagCache {
 
         TagDTO tool = new TagDTO();
         tool.setCategoryName("developmentTools");
-        tool.setTags(Arrays.asList("git", "github", "visual-studio-code", "vim", "sublime-text", "xcode intellij-idea", "eclipse", "maven", "ide", "svn", "visual-studio", "atom emacs", "textmate", "hg"));
+        tool.setTags(Arrays.asList("git", "github", "svn", "vim", "maven", "idea", "eclipse", "visual-studio", "atom emacs", "textmate", "hg"));
         tagDTOS.add(tool);
         return tagDTOS;
     }
