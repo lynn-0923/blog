@@ -36,7 +36,7 @@
                 </div>
                 <div class="media-body">
                     <h4 class="media-heading" >
-                        <a th:href="@{'/question/'+${question.id}}" th:text="${question.title}"></a>
+                        <a th:href="@{'/question/'+${question.id}}" th:text="${#strings.abbreviate(question.title,35)}"></a>
                     </h4>
                     <!--<span th:text="${question.description}"></span><br>-->
                   <!--<span th:text="${#strings.abbreviate(question.description,25)}"></span>-->
