@@ -4,7 +4,9 @@ body {
 
 .main {
     background-color: white;
-    margin: 30px
+    margin-left: 150px;
+    margin-right: 150px;
+    margin-bottom: 60px;
 }
 
 .btn-publish {
@@ -143,4 +145,20 @@ body {
 }
 .related{
     margin: 10px;
+}
+.remen{
+    width: 10%;
+}
+.remen-list{
+    width: 8%;
+}
+.error-message{
+    font-size: 40px;
+    text-align: center;
+    display: block;
+    color: #00a8c6;
+}
+.head-style{
+    width: 80%;
+    text-align: center;
 }
