@@ -12,13 +12,12 @@
     <script src="/js/bootstrap.min.js" type="application/javascript"></script>
     <script src="/js/moment.js"></script>
     <script src="/js/blog.js" type="application/javascript"></script>
-    <script src="/js/editormd.min.js" type="application/javascript" ></script>
-    <script src="/js/lib/marked.min.js" type="application/javascript"> </script>
-    <script src="/js/lib/prettify.min.js" type="application/javascript" ></script>
+    <script src="/js/editormd.min.js" type="application/javascript"></script>
+    <script src="/js/lib/marked.min.js" type="application/javascript"></script>
+    <script src="/js/lib/prettify.min.js" type="application/javascript"></script>
 
 
-
-    </head>
+</head>
 <body>
 <div th:insert="~{navigation :: nav}"></div>
 <div class="container-fluid main profile">
@@ -35,12 +34,11 @@
             </span>
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="question-view">
-                    <textarea style="display: none"  th:text="${question.description}" ></textarea>
+                    <textarea style="display: none" th:text="${question.description}"></textarea>
                 </div>
                 <script type="text/javascript">
                     $(function () {
-                        editormd.markdownToHTML("question-view",{
-                        });
+                        editormd.markdownToHTML("question-view", {});
                     });
                 </script>
                 <!--标签-->
@@ -81,10 +79,10 @@
                             <div th:text="${comment.content}"></div>
                             <div class="menu">
                                 <!--<span class="glyphicon glyphicon-thumbs-up icon"></span>-->
-                                <span  th:data-id="${comment.id}"
-                                       onclick="collapseComment(this)" class="comment-icon">
+                                <span th:data-id="${comment.id}"
+                                      onclick="collapseComment(this)" class="comment-icon">
                                     <span class="glyphicon glyphicon-edit"></span>
-                                    <span th:text="${comment.commentCount}" ></span>
+                                    <span th:text="${comment.commentCount}"></span>
                                 </span>
                                 <span class="pull-right"
                                       th:text="${#dates.format(comment.gmtCreate,'yyyy-MM-dd HH:mm')}"></span>
@@ -93,8 +91,11 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 collapse sub_comments"
                                  th:id="${'comment-'+comment.id}">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <input type="text" class="form-control" placeholder="Comment on it" th:id="${'input-'+comment.id}">
-                                    <button type="button" class="btn btn-success comment_btn" th:data-id="${comment.id}" onclick="comment(this)">Comment</button>
+                                    <input type="text" class="form-control" placeholder="Comment on it"
+                                           th:id="${'input-'+comment.id}">
+                                    <button type="button" class="btn btn-success comment_btn" th:data-id="${comment.id}"
+                                            onclick="comment(this)">Comment
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +105,7 @@
             <!--回复输入框-->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h4>
-                   Commit
+                    Commit
                 </h4>
                 <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment_sp">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 comment_section">
@@ -146,11 +147,7 @@
                 </div>
             </div>
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <!--微信号-->
-            <div>
-                <h4>Communication</h4>
-                <img class="img-thumbnail wechat" src="/images/wechat.jpg">
-            </div>
+
             <!--相关问题-->
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -165,5 +162,6 @@
         </div>
     </div>
 </div>
-<div th:insert="~{footer :: foot}"></div></body>
+<div th:insert="~{footer :: foot}"></div>
+</body>
 </html>

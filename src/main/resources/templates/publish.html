@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Lynn Community</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/css/blog.css">
@@ -19,30 +19,30 @@
 <div class="container-fluid main">
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h2> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Launch</h2>
+            <h2><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Launch</h2>
             <hr>
             <form action="/publish" method="post">
                 <input type="hidden" name="id" th:value="${id}">
                 <div class="form-group">
                     <label for="title">Question Title(concise description):</label>
-                    <input type="text" class="form-control"th:value="${title}"  name="title" id="title"
+                    <input type="text" class="form-control" th:value="${title}" name="title" id="title"
                            placeholder="question..."
-                        autocomplete="off" >
+                           autocomplete="off">
                 </div>
                 <div class="form-group" id="question-editor">
                     <label for="description">Supplementary Question(please refer to the right side):</label>
-                    <textarea name="description" th:text="${description}"  id="description" style="display: none"
+                    <textarea name="description" th:text="${description}" id="description" style="display: none"
                               class="form-control" cols="30" rows="12"></textarea>
                 </div>
                 <script type="text/javascript">
-                    $(function() {
+                    $(function () {
                         var editor = editormd("question-editor", {
-                            width  : "100%",
-                            height : "350px",
-                            path   : "/js/lib/",
-                            delay:0,
-                            watch:false,
-                            placeholder:"Please input question description",
+                            width: "100%",
+                            height: "350px",
+                            path: "/js/lib/",
+                            delay: 0,
+                            watch: false,
+                            placeholder: "Please input question description",
                             imageUpload: true,
                             imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
                             imageUploadURL: "/file/upload"
@@ -56,27 +56,28 @@
                            autocomplete="off"
                            onclick="showSelectTag()">
                     <div id="select-tag" class="publish-tag-lab">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" th:each="selectCategory,selectCategoryStat:${tags}"
-                                    th:class="${selectCategoryStat.first ? 'active':''}">
-                                    <a th:href="${'#'+selectCategory.categoryName}"
-                                       aria-controls="home" role="tab" data-toggle="tab" th:text="${selectCategory.categoryName}"></a>
-                                </li>
-                            </ul>
-                            <!-- Tab panes -->
-                            <div class="tab-content">
-                                <div role="tabpanel" th:id="${selectCategory.categoryName}"
-                                     th:each="selectCategory:${tags}"
-                                     th:class="${selectCategoryStat.first ? 'active tab-pane':'tab-pane'}">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" th:each="selectCategory,selectCategoryStat:${tags}"
+                                th:class="${selectCategoryStat.first ? 'active':''}">
+                                <a th:href="${'#'+selectCategory.categoryName}"
+                                   aria-controls="home" role="tab" data-toggle="tab"
+                                   th:text="${selectCategory.categoryName}"></a>
+                            </li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" th:id="${selectCategory.categoryName}"
+                                 th:each="selectCategory:${tags}"
+                                 th:class="${selectCategoryStat.first ? 'active tab-pane':'tab-pane'}">
                                     <span class="label label-info" th:each="selectTag:${selectCategory.tags}">
-                                        <span class="glyphicon glyphicon-tags"  onclick=selectTag(this)
+                                        <span class="glyphicon glyphicon-tags" onclick=selectTag(this)
                                               th:data-tag="${selectTag}"
                                               th:text="${' '+selectTag}">
                                         </span>
                                     </span>
-                                </div>
                             </div>
+                        </div>
                     </div>
                 </div>
                 <span th:if="${error !=null}">
@@ -87,11 +88,17 @@
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
             <h2>Problem Initiation Guide</h2>
-            <h3>•Problem Title:</h3> Please describe your problem in concise language, no more than 25 words<hr>
-            <h3>•Supplementary Question:</h3> Supplement your question in detail, make sure the description is clear and intuitive, and provide some relevant information<hr>
-            <h3>•Choose Tags:</h3> Please select one or more appropriate tags and  separated by ',',every tag with no more than 10 words<hr>
+            <h3>•Problem Title:</h3> Please describe your problem in concise language, no more than 25 words
+            <hr>
+            <h3>•Supplementary Question:</h3> Supplement your question in detail, make sure the description is clear and
+            intuitive, and provide some relevant information
+            <hr>
+            <h3>•Choose Tags:</h3> Please select one or more appropriate tags and separated by ',',every tag with no
+            more than 10 words
+            <hr>
         </div>
     </div>
 </div>
-<div th:insert="~{footer :: foot}"></div></body>
+<div th:insert="~{footer :: foot}"></div>
+</body>
 </html>

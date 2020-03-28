@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="${sectionName}"></title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="referrer" content="never">
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
@@ -16,7 +16,7 @@
 <div class="container-fluid main profile">
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h2> <span th:text="${sectionName}"></span></h2>
+            <h2><span th:text="${sectionName}"></span></h2>
             <hr>
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" th:if="${section =='questions'}">
                 <div class="media" th:each="question : ${pageDTOs.data}">
@@ -52,7 +52,8 @@
                                th:text="${notification.outerTitle}">
                             </a>
                             <span class="label label-danger " th:if="${notification.status == 0}">unread</span>
-                            <span class="notify_time" th:text="${#dates.format(notification.gmtCreate,'yyyy-MM-dd HH:mm')}"></span>
+                            <span class="notify_time"
+                                  th:text="${#dates.format(notification.gmtCreate,'yyyy-MM-dd HH:mm')}"></span>
                         </p>
                     </div>
                 </div>
@@ -67,7 +68,8 @@
                             </a>
                         </li>
                         <li th:if="${pageDTOs.showPrevious}">
-                            <a th:href="@{'/profile/'+${section}(page=${pageDTOs.currentPage -1})}" aria-label="Previous">
+                            <a th:href="@{'/profile/'+${section}(page=${pageDTOs.currentPage -1})}"
+                               aria-label="Previous">
                                 <span aria-hidden="true">&lt;</span>
                             </a>
                         </li>
@@ -91,8 +93,9 @@
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
             <div class="list-group section">
-                <a href="/profile/questions"   th:class="${section=='questions'}? 'active list-group-item':'list-group-item'">My Problem</a>
-                <a href="/profile/replies"  th:class="${section=='replies'}? 'active list-group-item':'list-group-item'">
+                <a href="/profile/questions"
+                   th:class="${section=='questions'}? 'active list-group-item':'list-group-item'">My Problem</a>
+                <a href="/profile/replies" th:class="${section=='replies'}? 'active list-group-item':'list-group-item'">
                     Latest Reply
                     <span class="badge" th:text="${session.unReadMessage}"></span>
                 </a>
@@ -100,5 +103,6 @@
         </div>
     </div>
 </div>
-<div th:insert="~{footer :: foot}"></div></body>
+<div th:insert="~{footer :: foot}"></div>
+</body>
 </html>
