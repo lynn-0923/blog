@@ -93,13 +93,16 @@
             <h4><img class="remen" src="/images/remen.png">Hot Tags</h4>
             <!--相关问题-->
             <!--<hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
-                <div class="question-related hot-tag">
+                <div class="hot-tag">
                     <!--<li th:each="tag : ${tags}" >-->
-                    <span class="label label-info question_tag" th:each="tag : ${tags}">
+                    <span class="label label-info question_tag " th:each="tag,tagStat : ${tags}">
                            <span class="label label-info ">
                                <img class="remen-list" src="/images/A.png">
                                <a th:href="@{/(page=1,search=${search},tag=${tag})}" th:text="${tag}"></a>
                            </span>
+                        <span th:if="${tagStat.count % 3 == 0}">
+                            <br>
+                        </span>
                          </span>
                     <!--    <img class="remen-list" src="/images/A.png">
                         <a th:href="@{/(page=1,search=${search},tag=${tag})}" th:text="${tag}"></a>-->
