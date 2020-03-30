@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1121212/html">
+<html xmlns:th="http://www.thymeleaf.org http://www.w3.org/1121212/html">
 <head>
     <title>Lynn Community</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="css/blog.css">
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js" type="application/javascript"></script>
-
 </head>
 <script type="application/javascript">
     window.onload = function () {
@@ -83,16 +82,15 @@
             </nav>
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 border">
-            <!--微信号-->
+            <!--天气-->
             <div>
-                <h4>  <img class="communication" src="/images/touxiang.png">Communication</h4>
-                <img class="img-thumbnail wechat" src="/images/wechat.jpg">
-                <img class="img-thumbnail qq" src="/images/qq.jpg">
+
             </div>
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <h4><img class="remen" src="/images/remen.png">Hot Tags</h4>
-            <!--相关问题-->
-            <!--<hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
+            <div>
+                <h4><img class="remen" src="/images/remen.png">Hot Tags</h4>
+                <!--相关问题-->
+                <!--<hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">-->
                 <div class="hot-tag">
                     <!--<li th:each="tag : ${tags}" >-->
                     <span class="label label-info question_tag " th:each="tag,tagStat : ${tags}">
@@ -109,6 +107,14 @@
                     <!--</li>-->
                     </span>
                 </div>
+            </div>
+            <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <!--微信号-->
+            <div>
+                <h4><img class="communication" src="/images/touxiang.png">Communication</h4>
+                <img class="img-thumbnail wechat" src="/images/wechat.jpg">
+                <img class="img-thumbnail qq" src="/images/qq.jpg">
+            </div>
         </div>
         <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     </div>

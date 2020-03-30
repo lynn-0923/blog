@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="/css/blog.css">
     <link rel="stylesheet" href="/css/editormd.preview.min.css">
+    <link href="/css/index.css" rel="stylesheet">
+    <script src="/js/index.js" type="application/javascript"></script>
+    <script src="/js/AI.js" type="application/javascript"></script>
     <script src="/js/jquery-3.4.1.min.js"></script>
     <script src="/js/bootstrap.min.js" type="application/javascript"></script>
     <script src="/js/moment.js"></script>
@@ -130,6 +133,7 @@
         </div>
         <!--右边信息块-->
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+            <!--发起人-->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h4>Initiator</h4>
                 <div class="media">
@@ -147,7 +151,38 @@
                 </div>
             </div>
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <!--娱乐一下-->
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="media">
+                    <div class="media-left">
+                        <img class="media-object img-rounded" src="/images/game.png">
+                    </div>
+                    <div class="media-body">
+                        <h5 class="media-heading">
+                            <span th:text="Entertainment"></span>
+                        </h5>
+                    </div>
+                </div>
+                <div>
+                    <!-- Large modal -->
+                    <a type="button" style="cursor: pointer" data-toggle="modal" data-target=".bs-example-modal-lg">
+                        <img class="game" src="/images/img/timg.jpg">
+                    </a>
 
+                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+                         aria-labelledby="myLargeModalLabel">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div id="chess"></div>
+                            <div class="modal-footer">
+                                <button id="reload" type="button" class="btn btn-default" onclick="gridInit()">Once
+                                    again
+                                </button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!--相关问题-->
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">

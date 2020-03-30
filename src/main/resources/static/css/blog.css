@@ -127,10 +127,12 @@ body {
     width: 45%;
     float: left;
 }
-.qq{
+
+.qq {
     width: 41%;
     float: right;
 }
+
 .publish-tag-lab {
     margin-top: 10px;
     display: none;
@@ -184,10 +186,12 @@ body {
 .remen-list {
     width: 6%;
 }
-.communication{
+
+.communication {
     width: 10%;
     margin-right: 6px;
 }
+
 .error-message {
     font-size: 40px;
     text-align: center;
@@ -207,13 +211,22 @@ body {
 .related-tag {
     width: 10%;
 }
-.border{
-    border: 1px solid  #D2D2D2;
+
+.border {
+    border: 1px solid #D2D2D2;
 }
-.get_source{
+
+.get_source {
     float: left;
     margin-top: 16px;
 }
-.main-content{
+
+.main-content {
     text-indent: 2em;
 }
+
+.game {
+    width: 275px;
+    height: 275px;
+}
+

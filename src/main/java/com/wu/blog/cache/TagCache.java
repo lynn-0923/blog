@@ -34,7 +34,7 @@ public class TagCache {
 
         TagDTO tool = new TagDTO();
         tool.setCategoryName("developmentTools");
-        tool.setTags(Arrays.asList("git", "github", "svn", "vim", "maven", "idea", "eclipse", "visual-studio", "atom emacs", "textmate", "hg"));
+        tool.setTags(Arrays.asList("git", "github","剑指offer","leetcode", "svn", "vim", "maven", "idea", "eclipse", "visual-studio", "atom emacs", "textmate", "hg"));
         tagDTOS.add(tool);
         return tagDTOS;
     }

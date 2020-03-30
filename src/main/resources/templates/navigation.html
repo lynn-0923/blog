@@ -32,10 +32,12 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header main-content">
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                          欢迎大家来到本站，为了您的良好体验，如果发现bug请务必联系管理员， 您也可以提出您对本站的建议和看法，非常感谢， 您可以发送邮件到 <b>1528141204@qq.com</b>， 或者扫描<b>首页右下的二维码</b>， 顺便交个朋友~
-                                             <br>
-                                             <br>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span></button>
+                                          欢迎大家来到本站，为了您的良好体验，如果发现bug请务必联系管理员， 您也可以提出您对本站的建议和看法，非常感谢， 您可以发送邮件到 <b>1528141204@qq.com</b>，
+                                        或者扫描<b>首页右下的二维码</b>， 顺便交个朋友~
+                                        <br>
+                                        <br>
                                           更多功能正在开发中~
                                     </div>
                                     <div class="get_source">
@@ -54,11 +56,12 @@
                         <a href="/publish">Question</a>
                     </li>
                     <li th:if="${session.user ==null}">
-                        <a  data-toggle="tooltip" style="cursor: pointer" data-placement="bottom" title="Please login first">
-                           Question</a>
+                        <a data-toggle="tooltip" style="cursor: pointer" data-placement="bottom"
+                           title="Please login first">Question</a>
                     </li>
                     <li th:if="${session.user !=null}"><a href="/profile/replies">Message <span class="badge"
-                                                                 th:text="${session.unReadMessage}"></span></a></li>
+                                                                                                th:text="${session.unReadMessage}"></span></a>
+                    </li>
                     <li class="dropdown" th:if="${session.user !=null}">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">
