@@ -42,7 +42,7 @@
       and tag regexp #{tag}
     </if>
   </where>
-  order by gmt_create desc limit 15
+  order by gmt_create desc limit 10
 </select>
 
   <select id="countBySearch" parameterType="com.wu.blog.dto.QuestionQueryDTO"
