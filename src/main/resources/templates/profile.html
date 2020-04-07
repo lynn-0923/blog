@@ -28,7 +28,8 @@
                     </div>
                     <div class="media-body">
                         <h4 class="media-heading">
-                            <a th:href="@{'/question/'+${question.id}}" th:text="${question.title}"></a>
+                            <a th:href="@{'/question/'+${question.id}}"
+                               th:text="${#strings.abbreviate(question.title,35)}"></a>
                         </h4>
                         <span class="text-desc">
                         <span th:text="${question.commentCount}"></span> replies •
@@ -49,7 +50,7 @@
                         <p class="media-heading">
                             <span th:text="${notification.notifierName +' ' + notification.typeName + ' '}"></span>
                             <a th:href="@{'/notification/'+ ${notification.id}}"
-                               th:text="${notification.outerTitle}">
+                               th:text="${#strings.abbreviate(notification.outerTitle,35)}">
                             </a>
                             <span class="label label-danger " th:if="${notification.status == 0}">unread</span>
                             <span class="notify_time"

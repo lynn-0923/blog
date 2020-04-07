@@ -207,8 +207,13 @@ body {
 
 .text-desc {
     float: right;
+    font-size: 15px;
+    font-weight: normal;
+    color: #999;
 }
-
+.detail-desc{
+    float: right;
+}
 .related-tag {
     width: 10%;
 }
@@ -230,4 +235,6 @@ body {
     width: 240px;
     height: 240px;
 }
-
+.red {
+    color: red !important;
+}

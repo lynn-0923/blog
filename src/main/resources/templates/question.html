@@ -30,7 +30,7 @@
             <!--正文-->
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h4><span th:text="${question.title}"></span></h4>
-                <span class="text-desc">
+                <span class="detail-desc">
               author:  <span th:text="${question.user.name}"></span> |
               release time:  <span th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd HH:mm')}"></span> |
               viewCounts: <span th:text="${question.getViewCount()}"></span>

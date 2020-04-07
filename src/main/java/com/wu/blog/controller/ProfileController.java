@@ -34,7 +34,7 @@ public class ProfileController {
         if("questions".equals(action)){
             model.addAttribute("section","questions");
             model.addAttribute("sectionName","My Problem");
-            PageDTO pageDTOs = questionService.listByUid(user.getId(), page, size);
+            PageDTO pageDTOs = questionService.list(user.getId(), page, size);
             model.addAttribute("pageDTOs",pageDTOs);
         }else if("replies".equals(action)){
             PageDTO pageDTOs=notificationService.list(user.getId(),page,size);

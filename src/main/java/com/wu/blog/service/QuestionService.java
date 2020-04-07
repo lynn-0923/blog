@@ -6,6 +6,7 @@ import com.wu.blog.domain.User;
 import com.wu.blog.dto.PageDTO;
 import com.wu.blog.dto.QuestionDTO;
 import com.wu.blog.dto.QuestionQueryDTO;
+import com.wu.blog.enums.SortEnum;
 import com.wu.blog.exception.CustomizeErrorCode;
 import com.wu.blog.exception.CustomizeException;
 import com.wu.blog.mapper.QuestionExtMapper;
@@ -34,17 +35,41 @@ public class QuestionService {
     @Autowired
     private QuestionMapper questionMapper;
 
-    public PageDTO list(String search, String tag, Integer page, Integer size) {
+    public PageDTO list(String search, String tag, String sort, Integer page, Integer size) {
         if (StringUtils.isNotBlank(search)) {
             String[] tags = StringUtils.split(search, " ");
-            search = Arrays.stream(tags).collect(Collectors.joining("|"));
+            search = Arrays
+                    .stream(tags)
+                    .filter(StringUtils::isNotBlank)
+                    .map(t -> t.replace("+", "").replace("*", "").replace("?", ""))
+                    .filter(StringUtils::isNotBlank)
+                    .collect(Collectors.joining("|"));
         }
         PageDTO pageDTO = new PageDTO();
         Integer totalPages;
         QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
         questionQueryDTO.setSearch(search);
-        questionQueryDTO.setTag(tag);
+        if (StringUtils.isNotBlank(tag)) {
+            tag = tag.replace("+", "").replace("*", "").replace("?", "");
+            questionQueryDTO.setTag(tag);
+        }
+
+        for (SortEnum sortEnum : SortEnum.values()) {
+            if (sortEnum.name().toLowerCase().equals(sort)) {
+                questionQueryDTO.setSort(sort);
+
+                if (sortEnum == SortEnum.HOT7) {
+                    questionQueryDTO.setTime(System.currentTimeMillis() - 1000L * 60 * 60 * 24 * 7);
+                }
+                if (sortEnum == SortEnum.HOT30) {
+                    questionQueryDTO.setTime(System.currentTimeMillis() - 1000L * 60 * 60 * 24 * 30);
+                }
+                break;
+            }
+        }
+
         Integer totalCount = questionExtMapper.countBySearch(questionQueryDTO);
+
         //计算总页数
         totalPages = totalCount % size == 0 ? (totalCount / size) : (totalCount / size + 1);
         if (page < 1) {
@@ -53,28 +78,27 @@ public class QuestionService {
         if (page > totalPages) {
             page = totalPages;
         }
+
         pageDTO.setPagination(totalPages, page);
-        //size*(page-1)
         Integer offset = page < 1 ? 0 : size * (page - 1);
-        List<QuestionDTO> questionDTOS = new ArrayList<>();
-        QuestionExample example = new QuestionExample();
-        example.setOrderByClause("gmt_create desc");
         questionQueryDTO.setSize(size);
         questionQueryDTO.setPage(offset);
         List<Question> questions = questionExtMapper.selectBySearch(questionQueryDTO);
-        for (Question question : questions
-        ) {
+        List<QuestionDTO> questionDTOList = new ArrayList<>();
+
+        for (Question question : questions) {
             User user = userMapper.selectByPrimaryKey(question.getCreator());
             QuestionDTO questionDTO = new QuestionDTO();
             BeanUtils.copyProperties(question, questionDTO);
             questionDTO.setUser(user);
-            questionDTOS.add(questionDTO);
+            questionDTOList.add(questionDTO);
         }
-        pageDTO.setData(questionDTOS);
+
+        pageDTO.setData(questionDTOList);
         return pageDTO;
     }
 
-    public PageDTO listByUid(Long uid, Integer page, Integer size) {
+    public PageDTO list(Long uid, Integer page, Integer size) {
         PageDTO pageDTO = new PageDTO();
         Integer totalPages;
         QuestionExample questionExample = new QuestionExample();
