@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <title>Lynn Community</title>
+    <title>Lynn 社区</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
@@ -19,18 +19,18 @@
 <div class="container-fluid main">
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h2><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Launch</h2>
+            <h2><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> 发布</h2>
             <hr>
             <form action="/publish" method="post">
                 <input type="hidden" name="id" th:value="${id}">
                 <div class="form-group">
-                    <label for="title">Title(concise description):</label>
+                    <label for="title">标题(简单扼要):</label>
                     <input type="text" class="form-control" th:value="${title}" name="title" id="title"
-                           placeholder="question..."
+                           placeholder="标题……"
                            autocomplete="off">
                 </div>
                 <div class="form-group" id="question-editor">
-                    <label for="description">Supplementary (please refer to the right side):</label>
+                    <label for="description">补充 (必填，请参照右侧提示):</label>
                     <textarea name="description" th:text="${description}" id="description" style="display: none"
                               class="form-control" cols="30" rows="12"></textarea>
                 </div>
@@ -42,7 +42,7 @@
                             path: "/js/lib/",
                             delay: 0,
                             watch: false,
-                            placeholder: "Please input question description",
+                            placeholder: "请输入具体的描述……",
                             imageUpload: true,
                             imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
                             imageUploadURL: "/file/upload"
@@ -50,9 +50,9 @@
                     });
                 </script>
                 <div class="form-group">
-                    <label for="tag">Add Tags:</label>
+                    <label for="tag">添加标签:</label>
                     <input type="text" class="form-control" th:value="${tag}" name="tag" id="tag"
-                           placeholder="choose tags"
+                           placeholder="选择标签……"
                            autocomplete="off"
                            onclick="showSelectTag()">
                     <div id="select-tag" class="publish-tag-lab">
@@ -83,17 +83,16 @@
                 <span th:if="${error !=null}">
                      <span class="alert alert-danger" th:text="${error}"></span>
                 </span>
-                <button type="submit" class="btn btn-success btn-publish ">Release</button>
+                <button type="submit" class="btn btn-success btn-publish ">发布</button>
             </form>
         </div>
-        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
-            <h2>Initiation Guide</h2>
-            <h3>•Title:</h3> Please describe your problem in concise language
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 problem-guide">
+            <h2>发起指南</h2>
+            <h3>•标题: </h3> 请用简洁的语言描述您的问题
             <hr>
-            <h3>•Details:</h3> Supplement your question in detail, make sure the description is clear and
-            intuitive, and provide some relevant information
+            <h3>•补充:</h3> 详细补充您的问题内容，并确保描述的清晰直观, 可提供一些相关的资料
             <hr>
-            <h3>•Choose Tags:</h3> Please select one or more appropriate tags
+            <h3>•选择标签:</h3> 选择一个或者多个合适的标签
             <hr>
         </div>
     </div>

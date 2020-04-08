@@ -57,17 +57,17 @@ public class PublishController {
         model.addAttribute("tags", TagCache.get());
         User user= (User) request.getSession().getAttribute("user");
         if(user ==null){
-            model.addAttribute("error","User not logged in");
+            model.addAttribute("error","用户未登录！");
             return "publish";
         }
         if(title ==null|| title ==""){
-            model.addAttribute("error","Title cannot be empty");
+            model.addAttribute("error","标题不能为空！");
             return "publish";
         }if(description ==null || description ==""){
-            model.addAttribute("error","Supplementary question cannot be empty ");
+            model.addAttribute("error","请添加点描述！");
             return "publish";
         }if(tag ==null || tag ==""){
-            model.addAttribute("error","Tag cannot be empty");
+            model.addAttribute("error","至少得选择一个标签！");
             return "publish";
         }
         String invalid = TagCache.filterInvalid(tag);

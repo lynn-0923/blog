@@ -33,14 +33,14 @@ public class ProfileController {
         }
         if("questions".equals(action)){
             model.addAttribute("section","questions");
-            model.addAttribute("sectionName","My Problem");
+            model.addAttribute("sectionName","我的发布");
             PageDTO pageDTOs = questionService.list(user.getId(), page, size);
             model.addAttribute("pageDTOs",pageDTOs);
         }else if("replies".equals(action)){
             PageDTO pageDTOs=notificationService.list(user.getId(),page,size);
             model.addAttribute("section","replies");
             model.addAttribute("pageDTOs",pageDTOs);
-            model.addAttribute("sectionName","Latest Reply");
+            model.addAttribute("sectionName","最新回复");
         }
         return "profile";
     }

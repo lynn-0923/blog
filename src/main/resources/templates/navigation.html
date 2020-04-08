@@ -7,25 +7,25 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Publish-Lynn Community</span>
+                    <span class="sr-only">Lynn 社区</span>
                 </button>
-                <a class="navbar-brand" href="/">Lynn Community</a>
+                <a class="navbar-brand" href="/">Lynn 社区</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <form class="navbar-form navbar-left" action="/" method="get">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="search" placeholder="Problems">
+                        <input type="text" class="form-control" name="search" placeholder="搜索问题">
                     </div>
-                    <button type="submit" class="btn btn-default">Search</button>
+                    <button type="submit" class="btn btn-default">搜索</button>
                 </form>
                 <ul class="nav navbar-nav navbar-right">
                     <!--用户须知-->
                     <li>
                         <!-- Button trigger modal -->
                         <a type="button" data-toggle="modal" style="cursor: pointer" data-target="#myModal">
-                            Notification
+                            须知
                         </a>
                         <!-- Modal -->
                         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -53,13 +53,13 @@
                         </div>
                     </li>
                     <li th:if="${session.user !=null}">
-                        <a href="/publish">Question</a>
+                        <a href="/publish">发布</a>
                     </li>
                     <li th:if="${session.user ==null}">
                         <a data-toggle="tooltip" style="cursor: pointer" data-placement="bottom"
-                           title="Please login first">Question</a>
+                           title="请先登录">发布</a>
                     </li>
-                    <li th:if="${session.user !=null}"><a href="/profile/replies">Message <span class="badge"
+                    <li th:if="${session.user !=null}"><a href="/profile/replies">消息 <span class="badge"
                                                                                                 th:text="${session.unReadMessage}"></span></a>
                     </li>
                     <li class="dropdown" th:if="${session.user !=null}">
@@ -68,14 +68,14 @@
                             <span th:text="${session.user.name}"></span>
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/profile/questions">My Problem</a></li>
+                            <li><a href="/profile/questions">我的发布</a></li>
                             <!--<li><a href="#">Personal Information</a></li>-->
-                            <li><a href="/logout">LogOut</a></li>
+                            <li><a href="/logout">退出登录</a></li>
                         </ul>
                     </li>
                     <li th:if="${session.user == null}">
                         <!--<a href="https://github.com/login/oauth/authorize?client_id=6557c4ae0b77d9ba7586&redirect_uri=http://localhost:1106/callback&scope=user&state=1">Login</a>-->
-                        <a th:href="@{https://github.com/login/oauth/authorize(client_id='6557c4ae0b77d9ba7586',redirect_uri=${#httpServletRequest.getServletContext().getAttribute('redirectUri')},scope='user',state=1)}">Login</a>
+                        <a th:href="@{https://github.com/login/oauth/authorize(client_id='6557c4ae0b77d9ba7586',redirect_uri=${#httpServletRequest.getServletContext().getAttribute('redirectUri')},scope='user',state=1)}">登录</a>
                     </li>
 
                 </ul>

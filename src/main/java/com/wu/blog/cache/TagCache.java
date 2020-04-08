@@ -12,29 +12,29 @@ public class TagCache {
     public static List<TagDTO> get() {
         List<TagDTO> tagDTOS = new ArrayList<>();
         TagDTO program = new TagDTO();
-        program.setCategoryName("developmentLanguage");
-        program.setTags(Arrays.asList("java", "javascript", "php", "css", "html", "algorithms", "design pattern", "html5", "node.js", "python", "c++", "c", "golang", "objective-c", "typescript", "shell", "swift", "c#", "sass", "ruby", "bash", "less", "asp.net", "lua", "scala", "coffeescript", "actionscript", "rust", "erlang", "perl"));
+        program.setCategoryName("开发语言");
+        program.setTags(Arrays.asList("java", "javascript", "php", "css", "html", "剑指offer", "leetcode", "数据结构与算法", "设计模式", "html5", "node.js", "python", "c++", "c", "golang", "objective-c", "typescript", "shell", "swift", "c#", "sass", "ruby", "bash", "less", "asp.net", "lua", "scala", "coffeescript", "actionscript", "rust", "erlang", "perl"));
         tagDTOS.add(program);
 
         TagDTO framework = new TagDTO();
-        framework.setCategoryName("platformFramework");
+        framework.setCategoryName("平台框架");
         framework.setTags(Arrays.asList("springboot", "spring", "springcloud", "springmvc", "javaweb", "springData", "mybatis", "mybatis-plus", "shiro", "hibernate", "struts", "jpa"));
         tagDTOS.add(framework);
 
 
         TagDTO server = new TagDTO();
-        server.setCategoryName("theServer");
+        server.setCategoryName("服务器");
         server.setTags(Arrays.asList("linux", "nginx", "docker", "apache", "ubuntu", "centos", "tomcat", "ngnix", "unix", "dubbo", "hadoop", "windows-server"));
         tagDTOS.add(server);
 
         TagDTO db = new TagDTO();
-        db.setCategoryName("database");
+        db.setCategoryName("数据库");
         db.setTags(Arrays.asList("mysql", "redis", "mongodb", "sql", "oracle", "nosql memcached", "sqlserver", "postgresql", "sqlite"));
         tagDTOS.add(db);
 
         TagDTO tool = new TagDTO();
-        tool.setCategoryName("developmentTools");
-        tool.setTags(Arrays.asList("git", "github","剑指offer","leetcode", "svn", "vim", "maven", "idea", "eclipse", "visual-studio", "atom emacs", "textmate", "hg"));
+        tool.setCategoryName("开发工具");
+        tool.setTags(Arrays.asList("git", "github", "svn", "vim", "maven", "idea", "eclipse", "visual-studio", "UML", "atom emacs", "textmate", "hg"));
         tagDTOS.add(tool);
         return tagDTOS;
     }

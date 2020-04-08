@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org http://www.w3.org/1121212/html">
 <head>
-    <title>Lynn Community</title>
+    <title>Lynn 社区</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="referrer" content="never">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -24,23 +24,23 @@
 <div class="container-fluid main">
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 border">
-            <h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Find</h2>
+            <h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span> 发现</h2>
             <div>
                 <ul class="nav nav-tabs">
                     <li role="presentation" th:class="${sort == '' || sort == 'new' ? 'active':''}" >
-                        <a th:href="@{/(sort='new')}">Latest</a>
+                        <a th:href="@{/(sort='new')}">最新</a>
                     </li>
                     <li role="presentation" th:class="${sort == 'hot7' ? 'active':''}">
-                        <a th:href="@{/(sort='hot7')}">The hottest in a week</a>
+                        <a th:href="@{/(sort='hot7')}">7天最热</a>
                     </li>
                     <li role="presentation" th:class="${sort == 'hot30' ? 'active':''}">
-                        <a th:href="@{/(sort='hot30')}">The hottest in a month</a>
+                        <a th:href="@{/(sort='hot30')}">30天最热</a>
                     </li>
                     <li role="presentation" th:class="${sort == 'hot' ? 'active':''}">
-                        <a th:href="@{/(sort='hot')}">Hottest</a>
+                        <a th:href="@{/(sort='hot')}">最热</a>
                     </li>
                     <li role="presentation" th:class="${sort == 'no' ? 'active':''}">
-                        <a th:href="@{/(sort='no')}" class="red">Elimination of zero reply</a>
+                        <a th:href="@{/(sort='no')}" class="red">消灭零回复</a>
                     </li>
                 </ul>
             </div>
@@ -60,8 +60,8 @@
                             <span class="glyphicon glyphicon-tags "></span>
                            <span class="label label-info  " th:text="${tag}"></span>
                     </span>
-                    <span class="text-desc"><span th:text="${question.commentCount}"></span> replies • <span
-                            th:text="${question.getViewCount()}"></span> viewCounts •<span
+                    <span class="text-desc"><span th:text="${question.commentCount}"></span> 个评论 • <span
+                            th:text="${question.getViewCount()}"></span> 次浏览 •<span
                             th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd HH:mm')}"></span>
                     </span>
                     <hr class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
@@ -102,8 +102,7 @@
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 border">
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div>
-                <h4><img class="remen" src="/images/remen.png">Hot Tags</h4>
-                <!--相关问题-->
+                <h4><img class="remen" src="/images/remen.png">热门标签</h4>
                 <div class="hot-tag">
                     <span class="label label-info question_tag " th:each="tag,tagStat : ${tags}">
                            <span class="label label-info ">
@@ -120,7 +119,7 @@
             <hr class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <!--微信号-->
             <div>
-                <h4><img class="communication" src="/images/touxiang.png">Communication</h4>
+                <h4><img class="communication" src="/images/touxiang.png">联系站长</h4>
                 <img class="img-thumbnail wechat" src="/images/wechat.jpg">
                 <img class="img-thumbnail qq" src="/images/qq.jpg">
             </div>
