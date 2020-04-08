@@ -9,7 +9,7 @@ function post() {
 
 function comment2target(targetId, type, content) {
     if (!content) {
-        alert("Input can not be empty");
+        alert("输入内容不能为空");
         return;
     }
     $.ajax({
